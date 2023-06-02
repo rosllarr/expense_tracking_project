@@ -2,9 +2,12 @@ FROM python:3.11-bullseye@sha256:21ce92a075cf9c454a936f925e058b4d8fc0cfc7a05b9e8
 RUN apt update && apt install -y iproute2 vim
 WORKDIR /app
 
+ARG UID
+ARG GID
 EXPOSE 8000
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-# COPY ./source/expensestracking .
+USER ${UID}:${GID}
+COPY --chown=${UID}:${GID} ./expensestracking .
