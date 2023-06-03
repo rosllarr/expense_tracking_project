@@ -32,6 +32,10 @@ services:
       - "8001:8000"
     volumes:
       - ./expensestracking:/app
+    environment:
+      - POSTGRES_DB=expensestracking
+      - POSTGRES_USER=django
+      - POSTGRES_PASSWORD=Zgfkgvkgft12#$
     command: >
       bash -c "python manage.py migrate
       && python manage.py runserver 0.0.0.0:8000"
