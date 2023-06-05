@@ -4,10 +4,10 @@ from core.models import Transection
 
 
 class Month(Transection):
-    income = models.BooleanField()
-    expenses = models.BooleanField()
+    income = models.BooleanField(default=False)
+    expenses = models.BooleanField(default=False)
+    fixed = models.BooleanField(default=False)
+    extra = models.BooleanField(default=False)
 
-
-class Catalog(models.Model):
-    entry = models.ForeignKey(Month, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
+    def __str__(self):
+        return self.name
